@@ -6,20 +6,19 @@ import Button from '../button/Button';
 function AddUser(props) {
 const [enteredName, setEnteredName] = useState('');
 const [enteredAge, setEnteredAge] = useState('');
+const [isValid, setIsValid] = useState(true);
 
   const addUserHandler = (event) => {
     event.preventDefault();
     if(enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
+      setIsValid(false);
       return;
     }
     if(enteredAge < 1) {
       return;
     }
-    const FetchedData = {
-      Name: enteredName,
-      Age: enteredAge
-    }
-    props.addDataHandler(FetchedData);
+    
+    props.onaddData(enteredName, enteredAge);
     // console.log(FetchedData);
     setEnteredName('');
     setEnteredAge('');
@@ -38,13 +37,13 @@ const [enteredAge, setEnteredAge] = useState('');
   return (
     <Card className={style.input}>
     <form onSubmit={addUserHandler}>
-      <label htmlFor="username"> Name: </label>
+      <label htmlFor="username" style={{color: !isValid ? 'red' : 'black'}}> Name: </label>
       <input id="username" type="text" value={enteredName} onChange={nameChangeHandler} />
 
-      <label htmlFor="age"> Age: </label>
+      <label htmlFor="age" style={{color: !isValid ? 'red' : 'black'}}> Age: </label>
       <input id="age" type="number" value={enteredAge} onChange={ageChangeHandler} />
 
-      <Button type="submit">Submit</Button>
+      <Button style={{color: !isValid ? 'black' : 'black'}} type="submit">Submit</Button>
     </form>
    </Card>
   )

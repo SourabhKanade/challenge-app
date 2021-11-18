@@ -4,26 +4,17 @@ import Card from '../UI/Card';
 
 const UserList = (props) => {
 
-  const onaddData = (list) => {
-    const data = {
-      ...list,
-      id: Math.random().toString()
-    };
-   console.log(data);
-  };
-
     return (
       <Card className={styles.user}>
         <ul>
-          {onaddData.map((list) => {
-              <li>
-                ({list.usename} is ({list.age} Years old))
-              </li>
-              return;
-            })};
+          {props.users.map((list) => (
+              <li key={list.id}>
+                {list.name} is {list.age} Years old! 
+              </li> 
+          ))}
         </ul>
       </Card>
     );
-  };
+};
 
 export default UserList;

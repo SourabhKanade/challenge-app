@@ -1,22 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AddUser from './components/Users/AddUser';
 // import Card from '../src/components/UI/Card';
 import UserList from './components/Users/UserList';
 
 function App() {
+ const [userdata, setUserData] = useState([])
 
-  // const onaddData = (list) => {
-  //   const data = {
-  //     ...list,
-  //     id: Math.random().toString()
-  //   };
-  //  console.log(data);
-  // }
+  const addDataHandler = (uName, uAge) => {
+       setUserData((list) => {
+      return [
+        ...list, {name: uName, age: uAge, id: Math.random().toString()}
+      ]
+    })};
+  // console.log(setUserData);
 
   return (
     <>
-    <AddUser />
-    <UserList />
+    <AddUser onaddData={addDataHandler}/>
+    <UserList users={userdata} />
     </>
   );
 }
