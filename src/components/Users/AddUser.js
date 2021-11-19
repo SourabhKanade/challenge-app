@@ -36,7 +36,7 @@ const [error, setError] = useState();
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
-    //  console.log('name button is clicked');
+    // console.log('name button is clicked');
   }
   
   const ageChangeHandler = (event) => {
@@ -54,10 +54,8 @@ const [error, setError] = useState();
     <form onSubmit={addUserHandler}>
       <label htmlFor="username" style={{color: !isValid ? 'red' : 'black'}}> Name: </label>
       <input id="username" type="text" value={enteredName} onChange={nameChangeHandler} />
-
       <label htmlFor="age" style={{color: !isValid ? 'red' : 'black'}}> Age: </label>
       <input id="age" type="number" value={enteredAge} onChange={ageChangeHandler} />
-
       <Button style={{color: !isValid ? 'black' : 'black'}} type="submit">Submit</Button>
     </form>
    </Card>
