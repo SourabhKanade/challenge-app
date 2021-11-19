@@ -7,13 +7,13 @@ import Button from '../button/Button';
 function AddUser(props) {
 const [enteredName, setEnteredName] = useState('');
 const [enteredAge, setEnteredAge] = useState('');
-const [isValid, setIsValid] = useState(true);
+// const [isValid, setIsValid] = useState(true);
 const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
     if(enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
-      setIsValid(false);
+      // setIsValid(false);
       setError({
         title: 'Invalid Input',
         message: 'Please enter a valid name and age (non-empty values).',
@@ -52,11 +52,13 @@ const [error, setError] = useState();
     {error && (<ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />)}
     <Card className={style.input}>
     <form onSubmit={addUserHandler}>
-      <label htmlFor="username" style={{color: !isValid ? 'red' : 'black'}}> Name: </label>
+      <label htmlFor="username"  /*style={{color: !isValid ? 'red' : 'black'}}*/ > Name: </label> 
       <input id="username" type="text" value={enteredName} onChange={nameChangeHandler} />
-      <label htmlFor="age" style={{color: !isValid ? 'red' : 'black'}}> Age: </label>
+
+      <label htmlFor="age" /*style={{color: !isValid ? 'red' : 'black'}} */ > Age: </label>
       <input id="age" type="number" value={enteredAge} onChange={ageChangeHandler} />
-      <Button style={{color: !isValid ? 'black' : 'black'}} type="submit">Submit</Button>
+
+      <Button /*style={{color: !isValid ? 'black' : 'black'}}*/ type="submit">Submit</Button>
     </form>
    </Card>
     </>
