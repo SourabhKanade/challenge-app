@@ -15,7 +15,7 @@ const [error, setError] = useState();
     if(enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       setIsValid(false);
       setError({
-        title: 'Invalid input',
+        title: 'Invalid Input',
         message: 'Please enter a valid name and age (non-empty values).',
       });
       return;
