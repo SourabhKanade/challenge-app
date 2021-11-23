@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from './ErrorModal.module.css';
 import Card from './Card';
 import Button from '../button/Button';
 import classes from './ErrorModal.module.css';
